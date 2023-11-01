@@ -1,7 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const [todos, setTodos] = useState([
+    { text: "Learn about react" },
+    { text: "Meet friends" },
+    { text: "have girlfriend" },
+  ]);
   return (
     <div className="App">
       <header className="App-header">
