@@ -43,7 +43,7 @@ app.post("/updateTodoList/:id", (req, res) => {
 
 app.delete("/deleteTodoList/:id", (req, res) => {
   const id = req.params.id;
-  TodoModel.findByIdAndDelete({ _id: id })
+  TodoModel.findByIdAndDelete(id)
     .then((todo) => res.json(todo))
     .catch((err) => res.json(err));
 });
