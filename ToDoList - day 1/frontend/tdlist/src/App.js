@@ -1,5 +1,6 @@
 import react from "react";
-import { BroweseRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as BroweseRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import Todo from "./components/Todo";
 
