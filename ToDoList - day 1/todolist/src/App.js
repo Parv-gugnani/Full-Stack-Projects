@@ -1,28 +1,18 @@
-import logo from "./logo.svg";
 import "./App.css";
+import React from "react";
+import { useState } from "react";
+import ReactDOM from "react-dom";
 
 function App() {
   const [todos, setTodos] = useState([
-    { text: "Learn about react" },
+    { text: "Learn about React" },
     { text: "Meet friends" },
-    { text: "have girlfriend" },
+    { text: "Have fun" },
   ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>This is a React App</h1>
     </div>
   );
 }
