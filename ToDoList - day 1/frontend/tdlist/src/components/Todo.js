@@ -73,7 +73,17 @@ function Todo() {
         setEditableId(null);
         setEditedTask("");
         setEditedStatus("");
-        setEditedDeadline(""); // Clear the edited deadline
+        setEditedDeadline("");
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+  // Delete task from database
+  const deleteTask = (id) => {
+    axios
+      .delete("http://127.0.0.1:3001/deleteTodoList/" + id)
+      .then((result) => {
+        console.log(result);
         window.location.reload();
       })
       .catch((err) => console.log(err));
