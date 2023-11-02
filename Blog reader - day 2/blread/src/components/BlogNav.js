@@ -6,7 +6,7 @@ function BlogNav() {
   return (
     <div>
       <Navbar style={{ background: "#ffb703" }}>
-        <img src="p ico.ico" />
+        <img src="p ico.ico" height="35" alt="" loading="lazy" />
       </Navbar>
     </div>
   );
