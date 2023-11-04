@@ -3,6 +3,7 @@ import "./App.css";
 import MockMan from "mockman-js";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import { CartPage } from "./Pages/CartPage/CartPage";
 
 function App() {
   return (
