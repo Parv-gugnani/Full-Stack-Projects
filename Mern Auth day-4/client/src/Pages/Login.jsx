@@ -26,7 +26,7 @@ export default function Login() {
           value={data.password}
           onChange={(e) => setData({ ...data, password: e.target.value })}
         />
-        <button type="sbumit">Login</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
