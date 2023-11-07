@@ -6,6 +6,8 @@ const cors = require("cors");
 // intializations
 const app = express();
 
+app.use("/", require("./routes/authRoutes"));
+
 const port = 8000;
 app.listen(port, () =>
   console.log(`Server is runnnin on port http://localhost:${port}`)
