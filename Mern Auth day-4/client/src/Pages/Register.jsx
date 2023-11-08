@@ -1,6 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -8,9 +12,26 @@ export default function Register() {
   });
 
   // event handlers
-  const registerUser = (e) => {
+  const registerUser = async (e) => {
     //we use event.preventDefault to avoid unnecessary processing of the event when the user clicks outside of the register button
     e.preventDefault();
+    const { name, email, password } = data;
+    try {
+      const { data } = await axios.post("/register", {
+        name,
+        email,
+        password,
+      });
+      if (data.error) {
+        toast.error(data.error.message);
+      } else {
+        setData({});
+        toast.success("Login successful. Welcome!");
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
