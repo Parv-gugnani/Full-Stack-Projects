@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { useUser } from "@clerk/clerk-react";
+import { SignOutButton } from "@clerk/clerk-react";
 
 export const UserItem = () => {
   const { user } = useUser();
@@ -24,7 +25,9 @@ export const UserItem = () => {
             <Avatar className="h-5 w-5">
               <AvatarImage src={user?.imageUrl} />
             </Avatar>
-            <span>{user?.firstName}&apos;s Wave</span>
+            <span className="text-start font-medium line-clamp-1">
+              {user?.firstName}&apos;s Wave
+            </span>
           </div>
           <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
         </div>

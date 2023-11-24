@@ -16,7 +16,7 @@ export const Heading = () => {
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold">
         Your Insights, Notes & Strategies. Seamlessly Integrated.
         {""}
-        <br /> Surf into <span className="underline">Jotion</span>
+        <br /> Surf into <span className="underline">NoteWave</span>
       </h1>
       <h3 className="text-base sm:text-xl md:text-2xl font-medium">
         Dive into the creativity at NoteWave — where ideas collide and
