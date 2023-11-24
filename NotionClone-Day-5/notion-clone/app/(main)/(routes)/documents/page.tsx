@@ -1,5 +1,5 @@
 const DocumentsPage = () => {
-  return <div>This is a Protected DocumentsPage</div>;
+  return <div className="p-20">Documents Page</div>;
 };
 
 export default DocumentsPage;

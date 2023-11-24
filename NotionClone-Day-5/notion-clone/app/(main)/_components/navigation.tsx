@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { ChevronLeftIcon, MenuIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
-import React, { ElementRef, useRef } from "react";
+import React, { ElementRef, useEffect, useRef } from "react";
 import { useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
@@ -16,6 +16,20 @@ export const Navigation = () => {
   const navbarRef = useRef<ElementRef<"div">>(null);
   const [isResetting, setIsResettings] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
+
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    } else {
+      resetWidth();
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    }
+  }, [pathname, isMobile]);
 
   //   events
   const handleMouseDown = (
@@ -52,6 +66,35 @@ export const Navigation = () => {
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
+  const resetWidth = () => {
+    if (sidebarRef.current && navbarRef.current) {
+      setIsCollapsed(false);
+      setIsResettings(true);
+
+      sidebarRef.current.style.width = isMobile ? "100%" : "240px";
+      navbarRef.current.style.setProperty(
+        "width",
+        isMobile ? "0" : "calc(100%-240px)"
+      );
+      navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
+      // settimeout
+      setTimeout(() => setIsResettings(false), 300);
+    }
+  };
+
+  const collapse = () => {
+    if (sidebarRef.current && navbarRef.current) {
+      setIsCollapsed(true);
+      setIsResettings(true);
+
+      sidebarRef.current.style.width = "0";
+      navbarRef.current.style.setProperty("width", "100px");
+      navbarRef.current.style.setProperty("left", "0");
+
+      setTimeout(() => setIsResettings(false), 300);
+    }
+  };
+
   //
 
   return (
@@ -67,6 +110,7 @@ export const Navigation = () => {
       >
         <div
           role="button"
+          onClick={collapse}
           className={cn(
             "h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition",
             isMobile && "opacity-100"
@@ -83,7 +127,7 @@ export const Navigation = () => {
         {/* resize feature */}
         <div
           onMouseDown={handleMouseDown}
-          onClick={() => {}}
+          onClick={resetWidth}
           className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-e-resize absolute h-full w-1 bg-primary/10 right-0 top-0"
         />
       </aside>
@@ -97,7 +141,11 @@ export const Navigation = () => {
       >
         <nav className="bg-transparent px-3 py-2 w-full">
           {isCollapsed && (
-            <MenuIcon role="button" className="h-6 w-6 text-muted-foreground" />
+            <MenuIcon
+              onClick={resetWidth}
+              role="button"
+              className="h-6 w-6 text-muted-foreground"
+            />
           )}
         </nav>
       </div>
