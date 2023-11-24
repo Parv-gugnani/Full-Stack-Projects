@@ -9,6 +9,7 @@ import { SignInButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/spinner";
 import Link from "next/link";
+import { UserButton } from "@clerk/clerk-react";
 
 export const Navbar = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
@@ -32,7 +33,7 @@ export const Navbar = () => {
               </Button>
             </SignInButton>
             <SignInButton mode="modal">
-              <Button size="sm">Get Notewave Free</Button>
+              <Button size="sm">Get Wave Free</Button>
             </SignInButton>
           </>
         )}
@@ -41,7 +42,7 @@ export const Navbar = () => {
             <Button variant="ghost" size="sm" asChild>
               <Link href="/documents">Dive into Wave</Link>
             </Button>
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
           </>
         )}
         <ModeToggle />
