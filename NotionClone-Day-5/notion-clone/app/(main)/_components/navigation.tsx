@@ -18,6 +18,7 @@ import { api } from "@/convex/_generated/api";
 import { Item } from "./item";
 import { useMutation } from "convex/react";
 import { toast } from "sonner";
+import { DocumentList } from "./document-list";
 
 // implementation
 export const Navigation = () => {
@@ -150,7 +151,9 @@ export const Navigation = () => {
           <Item label="Settings" icon={Settings} onclick={() => {}} />
           <Item onclick={handleCreate} label="New Page" icon={PlusCircle} />
         </div>
-        <div className="mt-4">{/*  */}</div>
+        <div className="mt-4">
+          <DocumentList />
+        </div>
         {/* resize feature */}
         <div
           onMouseDown={handleMouseDown}
