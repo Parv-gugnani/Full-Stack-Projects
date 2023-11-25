@@ -13,7 +13,7 @@ import React, { ElementRef, useEffect, useRef } from "react";
 import { useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { UserItem } from "./user-item";
-import { useQuery } from "convex/react";
+// import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Item } from "./item";
 import { useMutation } from "convex/react";
@@ -24,7 +24,7 @@ export const Navigation = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
   //
-  const documents = useQuery(api.documents.get);
+  // const documents = useQuery(api.documents.get);
   const create = useMutation(api.documents.create);
 
   const isResizingRef = useRef(false);
@@ -120,6 +120,7 @@ export const Navigation = () => {
       error: "Failed to create a new note",
     });
   };
+
   //
 
   return (
@@ -149,11 +150,7 @@ export const Navigation = () => {
           <Item label="Settings" icon={Settings} onclick={() => {}} />
           <Item onclick={handleCreate} label="New Page" icon={PlusCircle} />
         </div>
-        <div className="mt-4">
-          {documents?.map((document) => (
-            <p key={document._id}>{document.title}</p>
-          ))}
-        </div>
+        <div className="mt-4">{/*  */}</div>
         {/* resize feature */}
         <div
           onMouseDown={handleMouseDown}
