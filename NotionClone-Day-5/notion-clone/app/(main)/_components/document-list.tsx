@@ -14,7 +14,6 @@ import { Item } from "./item";
 interface DocumentListProps {
   parentDocumentId?: Id<"documents">;
   level?: number;
-  data?: Doc<"documents">[] | undefined;
 }
 
 export const DocumentList = ({
@@ -32,7 +31,7 @@ export const DocumentList = ({
     }));
   };
 
-  const documents = useQuery(api.documents.getSidebar, {
+  const { data: documents, isLoading } = useQuery(api.documents.getSidebar, {
     parentDocument: parentDocumentId,
   });
 
@@ -40,11 +39,11 @@ export const DocumentList = ({
     router.push(`/documents/${documentId}`);
   };
 
-  if (documents === null) {
+  if (isLoading || documents === null) {
+    // Handle loading state or null data
     return (
       <>
         <Item.Skeleton level={level} />
-
         {level === 0 && (
           <>
             <Item.Skeleton level={level} />
@@ -71,7 +70,7 @@ export const DocumentList = ({
         <div key={document._id}>
           <Item
             id={document._id}
-            onclick={() => onRedirect(document._id)}
+            onClick={() => onRedirect(document._id)} // Fix typo 'onclick' to 'onClick'
             label={document.title}
             icon={FileIcon}
             documentIcon={document.icon}
