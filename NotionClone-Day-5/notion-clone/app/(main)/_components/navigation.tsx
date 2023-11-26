@@ -1,6 +1,13 @@
-"use client";
-
-import { cn } from "@/lib/utils";
+// Import missing dependencies
+import { useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useMediaQuery } from "usehooks-ts";
+import { toast } from "sonner";
+import { DocumentList } from "./document-list";
+import { Item } from "./item";
+import { api } from "@/convex/_generated/api";
+import { useMutation } from "convex/react";
+import { useState } from "react";
 import {
   ChevronLeftIcon,
   MenuIcon,
@@ -8,29 +15,17 @@ import {
   Search,
   Settings,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
-import React, { ElementRef, useEffect, useRef } from "react";
-import { useState } from "react";
-import { useMediaQuery } from "usehooks-ts";
 import { UserItem } from "./user-item";
-// import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
-import { Item } from "./item";
-import { useMutation } from "convex/react";
-import { toast } from "sonner";
-import { DocumentList } from "./document-list";
+import { cn } from "@/lib/utils";
 
-// implementation
 export const Navigation = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
-  //
-  // const documents = useQuery(api.documents.get);
   const create = useMutation(api.documents.create);
 
   const isResizingRef = useRef(false);
-  const sidebarRef = useRef<ElementRef<"aside">>(null);
-  const navbarRef = useRef<ElementRef<"div">>(null);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const navbarRef = useRef<HTMLDivElement>(null);
   const [isResetting, setIsResettings] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
@@ -48,7 +43,6 @@ export const Navigation = () => {
     }
   }, [pathname, isMobile]);
 
-  //   events
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -91,10 +85,10 @@ export const Navigation = () => {
       sidebarRef.current.style.width = isMobile ? "100%" : "240px";
       navbarRef.current.style.setProperty(
         "width",
-        isMobile ? "0" : "calc(100%-240px)"
+        isMobile ? "0" : "calc(100% - 240px)"
       );
       navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
-      // settimeout
+
       setTimeout(() => setIsResettings(false), 300);
     }
   };
@@ -122,11 +116,8 @@ export const Navigation = () => {
     });
   };
 
-  //
-
   return (
     <>
-      {/* we used sidebar to this is only activated on sidebar  */}
       <aside
         ref={sidebarRef}
         className={cn(
@@ -147,14 +138,13 @@ export const Navigation = () => {
         </div>
         <div>
           <UserItem />
-          <Item label="Search" icon={Search} isSearch onclick={() => {}} />
-          <Item label="Settings" icon={Settings} onclick={() => {}} />
-          <Item onclick={handleCreate} label="New Page" icon={PlusCircle} />
+          <Item label="Search" icon={Search} isSearch onClick={() => {}} />
+          <Item label="Settings" icon={Settings} onClick={() => {}} />
+          <Item onClick={handleCreate} label="New Page" icon={PlusCircle} />
         </div>
         <div className="mt-4">
           <DocumentList />
         </div>
-        {/* resize feature */}
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}

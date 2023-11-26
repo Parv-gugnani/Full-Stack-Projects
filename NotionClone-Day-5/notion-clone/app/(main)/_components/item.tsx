@@ -14,14 +14,14 @@ interface ItemProps {
   level?: number;
   onExpand?: () => void;
   label: string;
-  onclick: () => void;
+  onClick: () => void;
   icon: LucideIcon;
 }
 
 export const Item = ({
   id,
   label,
-  onclick,
+  onClick,
   icon: Icon,
   active,
   documentIcon,
@@ -39,11 +39,13 @@ export const Item = ({
 
   const ChevronIcon = expanded ? ChevronDown : ChevronRight;
 
+  const paddingLeft = level ? `${level * 12 + 12}px` : "12px";
+
   return (
     <div
-      onClick={onclick}
+      onClick={onClick}
       role="button"
-      style={{ paddingLeft: level ? `${level * 12 + 12}px` : "12px" }}
+      style={{ paddingLeft }}
       className={cn(
         "group min-h[27px] text-sm py-1 pr-3 w-full hover:bg-primary/5 flex items-center text-muted-foreground font-medium",
         active && "bg-primary/5 text-primary"
@@ -75,8 +77,10 @@ export const Item = ({
 };
 
 Item.Skeleton = function ItemSkeleton({ level }: { level?: number }) {
+  const paddingLeft = level ? `${level * 12 + 25}px` : "12px";
+
   return (
-    <div style={{ paddingLeft: level ? `${level * 12 + 25}px` : "12px" }}>
+    <div style={{ paddingLeft }}>
       <Skeleton className="h-4 w-4" />
       <Skeleton className="h-4 w-[30%]" />
     </div>

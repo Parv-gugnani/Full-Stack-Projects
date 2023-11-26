@@ -22,6 +22,8 @@ export const getSidebar = query({
       .filter((q) => q.eq(q.field("isArchived"), false))
       .order("desc")
       .collect();
+
+    return documents; // Add this line to return the documents
   },
 });
 
@@ -33,7 +35,6 @@ export const get = query({
       throw new Error("Not authenticated");
     }
 
-    // .collect()
     const documents = await ctx.db.query("documents").collect();
 
     return documents;
