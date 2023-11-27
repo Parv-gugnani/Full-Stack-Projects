@@ -173,11 +173,11 @@ export const restore = mutation({
         options.parentDocument = undefined;
       }
     }
-    await ctx.db.patch(args.id, options);
+    const document = await ctx.db.patch(args.id, options);
 
     recusriveRestore(args.id);
 
-    return existingDocument;
+    return document;
   },
 });
 
@@ -200,5 +200,9 @@ export const remove = mutation({
     if (existingDocument.userId !== userId) {
       throw new Error("Unauthorized");
     }
+
+    const document = await ctx.db.delete(args.id);
+
+    return document;
   },
 });
