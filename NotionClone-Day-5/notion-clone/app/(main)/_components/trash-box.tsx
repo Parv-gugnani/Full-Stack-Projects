@@ -96,7 +96,7 @@ export const TrashBox = () => {
               >
                 <Undo className="h-4 w-4 text-muted-foreground" />
               </div>
-              <ConfirmModal>Confirm Modal</ConfirmModal>
+              {/* confirm */}
             </div>
           </div>
         ))}
