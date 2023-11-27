@@ -10,7 +10,7 @@ import { Id } from "@/convex/_generated/dataModel";
 import { toast } from "sonner";
 import { Spinner } from "@/components/spinner";
 import { Input } from "@/components/ui/input";
-// import { ConfirmModal } from "@/components/modals/confirm-modal";
+import { ConfirmModal } from "@/components/modals/confirm-modal";
 
 export const TrashBox = () => {
   const router = useRouter();
@@ -96,7 +96,7 @@ export const TrashBox = () => {
               >
                 <Undo className="h-4 w-4 text-muted-foreground" />
               </div>
-              {/* <ConfirmModal onconfir></ConfirmModal> */}
+              <ConfirmModal>Confirm Modal</ConfirmModal>
             </div>
           </div>
         ))}

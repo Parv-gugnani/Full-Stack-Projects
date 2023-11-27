@@ -6,13 +6,22 @@ import {
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogTrigger,
-  AlertDialogTitle,
-  AlertDialogHeader,
   AlertDialogFooter,
-} from "@radix-ui/react-alert-dialog";
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
-export const ConfirmModal = {
-  children,
-  onConfirm}:ConfirmModalProps
+interface ConfirmModalProps {
+  children: React.ReactNode;
+  onConfirm: () => void;
+}
+
+export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
+  const handleConfirm = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+    onConfirm();
+  };
 };
