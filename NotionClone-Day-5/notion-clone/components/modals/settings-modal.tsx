@@ -18,7 +18,7 @@ export const SettingModal = () => {
           <div className="flex flex-col gap-y-1">
             <Label>Apperance</Label>
             <span className="text-[0.8rem] text-muted-foreground">
-              Customize how Wave looks on your device
+              Customize how Waves looks on your device
             </span>
           </div>
           <ModeToggle />
