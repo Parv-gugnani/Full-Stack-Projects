@@ -1,5 +1,5 @@
 const DocumentIdPage = () => {
-  return <div>Document Id Page</div>;
+  return <div>Document Id</div>;
 };
 
 export default DocumentIdPage;
