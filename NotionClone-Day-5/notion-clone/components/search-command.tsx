@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/command";
 import { CommandList } from "cmdk";
 
-export const SearchComman = () => {
+export const SearchCommand = () => {
   const { user } = useUser();
   const router = useRouter();
   const documents = useQuery(api.documents.getSerach);
