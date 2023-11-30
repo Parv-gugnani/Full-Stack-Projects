@@ -1,13 +1,13 @@
 "use client";
 
-import { Theme } from "emoji-picker-react";
-import EmojiPicker from "emoji-picker-react";
+import EmojiPicker, { Theme } from "emoji-picker-react";
+import { useTheme } from "next-themes";
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@radix-ui/react-popover";
-import { useTheme } from "next-themes";
+} from "@/components/ui/popover";
 
 interface IconPickerProps {
   onChange: (icon: string) => void;
@@ -21,7 +21,7 @@ export const IconPicker = ({
   asChild,
 }: IconPickerProps) => {
   const { resolvedTheme } = useTheme();
-  const currentTheme = (resolvedTheme || "Light") as keyof typeof themeMap;
+  const currentTheme = (resolvedTheme || "light") as keyof typeof themeMap;
 
   const themeMap = {
     dark: Theme.DARK,
