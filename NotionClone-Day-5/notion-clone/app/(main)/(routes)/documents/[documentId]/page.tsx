@@ -21,17 +21,16 @@ const DocumentIdPage = ({ params }: DocumentIdPage) => {
   }
 
   if (document === null) {
-    return (
-      <div className="pb-40">
-        <div className="h-[35vh]" />
-        <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
-          <Toolbar initialData={document} />
-        </div>
-      </div>
-    );
+    return <div>Not found</div>;
   }
 
-  return <div>Document Id</div>;
+  return (
+    <div className="pb-40">
+      <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
+        <Toolbar initialData={document} />
+      </div>
+    </div>
+  );
 };
 
 export default DocumentIdPage;
