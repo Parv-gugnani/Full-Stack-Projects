@@ -323,7 +323,7 @@ export const removeIcon = mutation({
   },
 });
 
-// remove cover
+// remove cover image
 
 export const removeCoverImage = mutation({
   args: { id: v.id("documents") },
