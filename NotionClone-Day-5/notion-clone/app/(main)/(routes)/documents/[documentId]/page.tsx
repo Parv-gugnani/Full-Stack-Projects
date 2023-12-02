@@ -43,9 +43,8 @@ const DocumentIdPage = ({ params }: DocumentIdPage) => {
     <div className="pb-40">
       <Cover url={document.coverImage} />
       <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
-        page
-        {/* <Toolbar initialData={document} />
-        <Editor onChange={onChange} initialContent={document.content} /> */}
+        <Toolbar initialData={document} />
+        <Editor onChange={onchange} initialContent={document.content} />
       </div>
     </div>
   );
