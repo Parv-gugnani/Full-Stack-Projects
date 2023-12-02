@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useMutation } from "convex/react";
 
 import { Doc } from "@/convex/_generated/dataModel";
@@ -46,7 +46,7 @@ export const Title = ({ initialData }: TitleProps) => {
       disableInput();
     }
   };
-  //
+
   return (
     <div className="flex items-center gap-x-1">
       {!!initialData.icon && <p>{initialData.icon}</p>}
