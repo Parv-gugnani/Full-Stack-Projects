@@ -1,4 +1,5 @@
 // Import missing dependencies
+import { useRouter } from "next/navigation";
 import { useRef, useEffect } from "react";
 import { useParams, usePathname } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
@@ -30,6 +31,7 @@ import { SettingModal } from "@/components/modals/settings-modal";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { useSettings } from "@/hooks/use-setting";
 import { Navbar } from "./navbar";
+// import { useRouter } from "next/router";
 
 export const Navigation = () => {
   const settings = useSettings();
@@ -37,6 +39,7 @@ export const Navigation = () => {
   const params = useParams();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const router = useRouter();
   const create = useMutation(api.documents.create);
 
   const isResizingRef = useRef(false);
@@ -123,7 +126,9 @@ export const Navigation = () => {
   };
 
   const handleCreate = () => {
-    const promise = create({ title: "Untitled" });
+    const promise = create({ title: "Untitled" }).then((documentId) =>
+      router.push(`/documents/${documentId}`)
+    );
 
     toast.promise(promise, {
       loading: "Creating a new note..",
