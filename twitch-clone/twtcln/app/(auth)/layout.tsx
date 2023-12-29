@@ -1,7 +1,7 @@
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col gap-y-4">
-      <nav className="p-1 bg-red-500 w-full">Auth Layout</nav>
+      <nav className="bg-red-500 w-full">Auth layout</nav>
       {children}
     </div>
   );
