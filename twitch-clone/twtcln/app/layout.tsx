@@ -23,7 +23,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <ThemeProvider
             attribute="class"
-            forcedTheme="white"
+            forcedTheme="dark"
             storageKey="twtichClone-theme"
           >
             {children}
