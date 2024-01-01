@@ -1,10 +1,17 @@
 import { PrismaClient } from "@prisma/client";
 
-//
+// Declare a global variable to store the PrismaClient instance
 declare global {
   var prisma: PrismaClient | undefined;
 }
 
-export const db = globalThis.prisma || new PrismaClient();
+// Create a function to initialize and return the PrismaClient instance
+export const getPrisma = () => {
+  if (globalThis.prisma === undefined) {
+    globalThis.prisma = new PrismaClient();
+  }
+  return globalThis.prisma;
+};
 
-if (process.env.NODE_ENV !== "production") globalThis.prisma = db;
+// Export the PrismaClient instance directly
+export const db = getPrisma();

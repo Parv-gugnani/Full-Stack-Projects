@@ -1,15 +1,30 @@
+// schema.prisma
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "mysql"
+  url = "mysql://root:Pa9812974231@localhost:3306/twdb"
+  // url      = env("DATABASE_URL") // Set your MySQL connection URL as an environment variable
+  // relationMode = "prisma"
 }
+
 
 generator client {
   provider = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
-model user{
+// model user{
+//   id String @id @default(uuid())
+//   username String @unique
+//   imageUrl String @db.Text
+//   externalUserId String @unique
+//   bio String? @db.Text
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
+
+// Define your user model for MongoDB// Define your user model for MongoDB
+model User {
   id String @id @default(uuid())
   username String @unique
   imageUrl String @db.Text
@@ -19,4 +34,3 @@ model user{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
