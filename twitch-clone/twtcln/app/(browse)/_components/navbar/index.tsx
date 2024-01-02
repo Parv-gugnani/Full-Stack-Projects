@@ -1,7 +1,5 @@
-"use client";
-// helps to debug
-import { Search } from "./search";
 import { Logo } from "./logo";
+import { Search } from "./search";
 import { Actions } from "./actions";
 
 export const Navbar = () => {

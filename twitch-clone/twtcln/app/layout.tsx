@@ -24,7 +24,7 @@ export default function RootLayout({
           <ThemeProvider
             attribute="class"
             forcedTheme="dark"
-            storageKey="twtichClone-theme"
+            storageKey="gamehub-theme"
           >
             {children}
           </ThemeProvider>

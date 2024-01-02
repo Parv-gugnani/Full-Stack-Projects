@@ -1,6 +1,10 @@
+"use client";
 import Link from "next/link";
+
 import { Clapperboard } from "lucide-react";
+
 import { SignInButton, UserButton, currentUser } from "@clerk/nextjs";
+
 import { Button } from "@/components/ui/button";
 
 export const Actions = async () => {
@@ -10,7 +14,7 @@ export const Actions = async () => {
     <div className="flex items-center justify-end gap-x-2 ml-4 lg:ml-0">
       {!user && (
         <SignInButton>
-          <Button size="sm" variant="primary">
+          <Button variant="default" size="sm">
             Login
           </Button>
         </SignInButton>

@@ -1,8 +1,10 @@
 "use client";
+
 import qs from "query-string";
 import { useState } from "react";
 import { SearchIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -22,6 +24,7 @@ export const Search = () => {
       },
       { skipEmptyString: true }
     );
+
     router.push(url);
   };
 
@@ -29,7 +32,6 @@ export const Search = () => {
     setValue("");
   };
 
-  //   rrn
   return (
     <form
       onSubmit={onSubmit}
@@ -38,8 +40,8 @@ export const Search = () => {
       <Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="search..."
-        className="rounded-r-none focus-visible:*:ring-0 focus-visible:ring-transparent  focus-visible:ring-offset-0"
+        placeholder="Search"
+        className="rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
       />
       {value && (
         <X
