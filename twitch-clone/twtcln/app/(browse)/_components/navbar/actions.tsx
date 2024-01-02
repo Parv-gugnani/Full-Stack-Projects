@@ -14,7 +14,7 @@ export const Actions = async () => {
     <div className="flex items-center justify-end gap-x-2 ml-4 lg:ml-0">
       {!user && (
         <SignInButton>
-          <Button variant="default" size="sm">
+          <Button size="sm" variant="primary">
             Login
           </Button>
         </SignInButton>
