@@ -1,8 +1,5 @@
-"use client";
 import Link from "next/link";
-
 import { Clapperboard } from "lucide-react";
-
 import { SignInButton, UserButton, currentUser } from "@clerk/nextjs";
 
 import { Button } from "@/components/ui/button";
