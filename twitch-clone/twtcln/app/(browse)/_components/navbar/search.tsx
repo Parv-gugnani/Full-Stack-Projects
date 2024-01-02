@@ -1,4 +1,4 @@
 "use client";
-export const Search = () => {
-  return <div>Search!</div>;
+export const Search = ({ children }: { children: React.ReactNode }) => {
+  return <div>{children}</div>;
 };
