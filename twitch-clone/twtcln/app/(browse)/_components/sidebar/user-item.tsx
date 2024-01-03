@@ -47,3 +47,14 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
     </Button>
   );
 };
+
+export const UserItemSkeleton = () => {
+  return (
+    <li className="flex items-center gap-x-4 px-3 py-3">
+      <Skeleton className="min-h-[32px] rounded-full" />
+      <div className="flex-1">
+        <Skeleton className="h-6" />
+      </div>
+    </li>
+  );
+};
