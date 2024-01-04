@@ -11,7 +11,7 @@ export const Logo = () => {
   return (
     <div className={cn("flex flex-col items-center gap-y-4")}>
       <div className="rounded-full p-1">
-        <Image src="/startLogo.png" alt="GameHub" height="80" width="80" />
+        <Image src="/startLogo.png" alt="GameHub" height="200" width="200" />
       </div>
       <div className="flex flex-col items-center">
         <p className="text-xl font-semibold">Twitch Clone</p>
