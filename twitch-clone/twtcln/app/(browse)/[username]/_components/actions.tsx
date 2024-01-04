@@ -51,10 +51,7 @@ export const Actions = ({ isFollowing, userId }: ActionsProps) => {
     </Button>
   );
 };
-/** 
- * 
- * 
- * 
+/*
 // actions are build in rpc and they allow use to do api less mutattion
 same way server components aloow use to do api
 
