@@ -38,7 +38,6 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
-
 model Follow {
   id String @id @default(uuid())
   followerId String
