@@ -5,7 +5,7 @@ interface UserPageProps {
 }
 
 const UserPage = ({ params }: UserPageProps) => {
-  return <div>User : {params.username}</div>;
+  return <div>User: {params.username}</div>;
 };
 
 export default UserPage;
