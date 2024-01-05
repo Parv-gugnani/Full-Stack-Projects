@@ -34,6 +34,8 @@ export const isFollowingUser = async (id: string) => {
       return true;
     }
 
+    // will do findunique
+
     const existingFollow = await db.follow.findFirst({
       where: {
         followerId: self.id,
