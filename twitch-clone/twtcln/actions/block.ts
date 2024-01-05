@@ -1,24 +1,27 @@
-import { blockUser } from "@/lib/block-service";
+"use server";
+
 import { revalidatePath } from "next/cache";
-import { unblockUser } from "@/lib/block-service";
+import { RoomServiceClient } from "livekit-server-sdk";
+
 import { getSelf } from "@/lib/auth-service";
+import { blockUser, unblockUser } from "@/lib/block-service";
 
 export const onBlock = async (id: string) => {
-  // adapt to disc from livestream
-  // allow ability to kick the gues
   const blockedUser = await blockUser(id);
+
+  revalidatePath("/");
 
   if (blockedUser) {
     revalidatePath(`/${blockedUser.blocked.username}`);
   }
 
   return blockedUser;
+  //
+  // catch
 };
 
 export const onUnblock = async (id: string) => {
   const self = await getSelf();
   const unblockedUser = await unblockUser(id);
-
-  revalidatePath(`/u/${self.username}/community`);
   return unblockedUser;
 };

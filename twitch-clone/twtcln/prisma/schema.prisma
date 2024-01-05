@@ -12,18 +12,6 @@ generator client {
   previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
-// model user{
-//   id String @id @default(uuid())
-//   username String @unique
-//   imageUrl String @db.Text
-//   externalUserId String @unique
-//   bio String? @db.Text
-
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
-
-// Define your user model for MongoDB// Define your user model for MongoDB
 model User {
   id String @id @default(uuid())
   username String @unique
@@ -56,7 +44,6 @@ model Follow {
   @@index([followerId])
   @@index([followingId])
 }
-
 
 model Block {
   id String @id @default(uuid())

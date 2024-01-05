@@ -31,14 +31,29 @@ export const getRecommended = async () => {
               },
             },
           },
+          {
+            NOT: {
+              blocking: {
+                some: {
+                  blockedId: userId,
+                },
+              },
+            },
+          },
         ],
       },
       include: {
-        // steam !
+        // stream: {
+        //   select: {
+        //     isLive: true,
+        //   },
+        // },
       },
       orderBy: [
         {
-          // steam
+          // stream: {
+          //   isLive: "desc",
+          // },
         },
         {
           createdAt: "desc",
@@ -46,7 +61,25 @@ export const getRecommended = async () => {
       ],
     });
   } else {
-    // =
+    users = await db.user.findMany({
+      include: {
+        // stream: {
+        //   select: {
+        //     isLive: true,
+        //   },
+        // },
+      },
+      orderBy: [
+        {
+          // stream: {
+          //   isLive: "desc",
+          // },
+        },
+        {
+          createdAt: "desc",
+        },
+      ],
+    });
   }
 
   return users;
